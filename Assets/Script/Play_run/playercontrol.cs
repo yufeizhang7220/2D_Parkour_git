@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class playercontrol : MonoBehaviour
 {
@@ -22,11 +23,16 @@ public class playercontrol : MonoBehaviour
     {
         
         
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
+       if (Input.GetKeyDown(KeyCode.Space))
+       {
                 jump();
-            }
-            
+       }
+       //==这是死亡回归脚本，后期理应加入界面是否跳转菜单===
+        if (hp == 0)
+        {
+            SceneManager.LoadScene("log_in");
+        }  
+        //=====================
         
         
     }
