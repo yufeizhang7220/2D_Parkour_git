@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class menu : MonoBehaviour
+public class menu_inGame : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -17,18 +17,14 @@ public class menu : MonoBehaviour
         
     }
 
-    //开始游戏
-    public void start_run()
+    public void back_menu()
     {
-        SceneManager.LoadScene("Sample_Play");
+        SceneManager.LoadScene("log_in");
     }
-    //结束游戏
-    public void exit()
+
+    public void to_exit()
     {
         Application.Quit();
         UnityEditor.EditorApplication.isPlaying = false;
     }
-
-    
-
 }

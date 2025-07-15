@@ -10,6 +10,7 @@ public class playercontrol : MonoBehaviour
     private Animator ani;
     private bool isGround;
     public static int hp=1;
+    public GameObject over_menu;
 
     // Start is called before the first frame update
     void Start()
@@ -22,21 +23,25 @@ public class playercontrol : MonoBehaviour
     void Update()
     {
         
-        
+        //空格判断跳跃
        if (Input.GetKeyDown(KeyCode.Space))
        {
                 jump();
        }
-       //==这是死亡回归脚本，后期理应加入界面是否跳转菜单===
+       //死亡界面跳转
         if (hp == 0)
         {
-            SceneManager.LoadScene("log_in");
+            if (over_menu != null)
+            {
+                over_menu.SetActive(true);
+            }
+
         }  
-        //=====================
+        
         
         
     }
-
+    //跳跃功能
     public void jump()
     {
         if (isGround == true)
@@ -49,20 +54,20 @@ public class playercontrol : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        //判断是否触地
         if (collision.collider.tag == "ground")
         {
             isGround = true;
         }
         ani.SetBool("isjump", false);
-
+        //判断是否出界，导致扣血，死亡
         if (collision.collider.tag == "die"&&hp>0)
         {
             hp = 0;
             audiomanager.instance.Play("Boss死了");
             ani.SetBool("isdie", true);
-            Destroy(gameObject);
         }
-
+        //判断是否碰到敌人，导致死亡扣血
         if (collision.collider.tag == "enemy")
         {
             hp = 0;
@@ -75,6 +80,7 @@ public class playercontrol : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
+        //判断是否触地
         if (collision.collider.tag == "ground")
         {
             isGround = false;

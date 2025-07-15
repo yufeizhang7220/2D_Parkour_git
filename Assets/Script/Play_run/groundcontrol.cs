@@ -15,10 +15,12 @@ public class groundcontrol : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //任务死亡时停止移动
         if (playercontrol.hp == 0)
         {
             return;
         }
+        //控制地面左移并且随机循环
         foreach (Transform tran in transform)
         {
             Vector3 pos = tran.position;

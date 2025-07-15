@@ -15,7 +15,7 @@ public class coincontrol : MonoBehaviour
     {
         
     }
-
+    //被触碰时销毁同时播放音效
     private void OnTriggerEnter2D(Collider2D other)
     {
         audiomanager.instance.Play("金币");
