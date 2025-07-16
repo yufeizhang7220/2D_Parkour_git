@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7330336923485400147}
   - component: {fileID: 9087649419540096157}
   - component: {fileID: 2763873293130189074}
+  - component: {fileID: 7860415786526067139}
   m_Layer: 0
   m_Name: coin_0
   m_TagString: Untagged
@@ -19,21 +20,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &826037735672166477
-Transform:
+--- !u!224 &826037735672166477
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6216058113544269707}
-  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.14, y: -0.74, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 1.14, y: -0.74}
+  m_SizeDelta: {x: 0.27, y: 0.27}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &7330336923485400147
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -98,6 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06d77afa1d715804189d4ce5f82d5449, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coin_num: {fileID: 0}
 --- !u!61 &2763873293130189074
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -143,3 +149,11 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.27, y: 0.27}
   m_EdgeRadius: 0
+--- !u!222 &7860415786526067139
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6216058113544269707}
+  m_CullTransparentMesh: 1

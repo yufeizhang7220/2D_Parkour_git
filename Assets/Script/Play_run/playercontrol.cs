@@ -11,12 +11,15 @@ public class playercontrol : MonoBehaviour
     private bool isGround;
     public static int hp=1;
     public GameObject over_menu;
-
+    float timer = 0f;
     // Start is called before the first frame update
     void Start()
     {
         rbody = GetComponent<Rigidbody2D>();
         ani = GetComponent<Animator>();
+        
+            over_menu.SetActive(false);
+        
     }
 
     // Update is called once per frame
@@ -36,8 +39,8 @@ public class playercontrol : MonoBehaviour
                 over_menu.SetActive(true);
             }
 
-        }  
-        
+        }
+
         
         
     }

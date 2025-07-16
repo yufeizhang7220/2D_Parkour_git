@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class coincontrol : MonoBehaviour
 {
     // Start is called before the first frame update
+    
     void Start()
     {
         
@@ -19,6 +21,7 @@ public class coincontrol : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         audiomanager.instance.Play("½ð±Ò");
+        
         Destroy(gameObject);
     }
 }

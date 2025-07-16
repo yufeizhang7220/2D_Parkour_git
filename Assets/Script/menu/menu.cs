@@ -21,6 +21,7 @@ public class menu : MonoBehaviour
     public void start_run()
     {
         SceneManager.LoadScene("Sample_Play");
+        playercontrol.hp = 1;
     }
     //½áÊøÓÎÏ·
     public void exit()
