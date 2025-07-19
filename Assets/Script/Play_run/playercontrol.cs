@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,16 +10,20 @@ public class playercontrol : MonoBehaviour
     private Rigidbody2D rbody;
     private Animator ani;
     private bool isGround;
+    //静态申明血量，金币数量
     public static int hp=1;
+    public static int coin_num = 0;
+
     public GameObject over_menu;
-    float timer = 0f;
+    public TMP_Text coin_text;
+    
     // Start is called before the first frame update
     void Start()
     {
         rbody = GetComponent<Rigidbody2D>();
         ani = GetComponent<Animator>();
         
-            over_menu.SetActive(false);
+        
         
     }
 
@@ -91,5 +96,12 @@ public class playercontrol : MonoBehaviour
         ani.SetBool("isjump", true);
     }
 
-    
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("coin"))
+        {
+            coin_num += 1;
+            coin_text.text = "×" + coin_num;
+        }
+    }
 }

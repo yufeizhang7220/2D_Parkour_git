@@ -20,8 +20,10 @@ public class menu : MonoBehaviour
     //开始游戏
     public void start_run()
     {
+        //加载PLAY场景，并且初始化hp，以及金币数量
         SceneManager.LoadScene("Sample_Play");
         playercontrol.hp = 1;
+        playercontrol.coin_num = 0;
     }
     //结束游戏
     public void exit()
