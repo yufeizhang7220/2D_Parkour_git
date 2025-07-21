@@ -7,27 +7,33 @@ using UnityEngine.SceneManagement;
 
 public class playercontrol : MonoBehaviour
 {
+    //获取自身组件
     private Rigidbody2D rbody;
     private Animator ani;
+
+    //判断是否触地
     private bool isGround;
+
     //静态申明血量，金币数量
     public static int hp=1;
     public static int coin_num = 0;
 
+    //获取over_menu物品，以及coin_num的文本组件
     public GameObject over_menu;
     public TMP_Text coin_text;
     
-    // Start is called before the first frame update
     void Start()
     {
         rbody = GetComponent<Rigidbody2D>();
         ani = GetComponent<Animator>();
-        
+
+        //初始化hp，coin_num
+        hp = 1;
+        coin_num = 0;
         
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         
@@ -44,11 +50,9 @@ public class playercontrol : MonoBehaviour
                 over_menu.SetActive(true);
             }
 
-        }
-
-        
-        
+        }        
     }
+
     //跳跃功能
     public void jump()
     {
@@ -68,6 +72,7 @@ public class playercontrol : MonoBehaviour
             isGround = true;
         }
         ani.SetBool("isjump", false);
+
         //判断是否出界，导致扣血，死亡
         if (collision.collider.tag == "die"&&hp>0)
         {
@@ -75,6 +80,7 @@ public class playercontrol : MonoBehaviour
             audiomanager.instance.Play("Boss死了");
             ani.SetBool("isdie", true);
         }
+
         //判断是否碰到敌人，导致死亡扣血
         if (collision.collider.tag == "enemy")
         {
@@ -96,6 +102,7 @@ public class playercontrol : MonoBehaviour
         ani.SetBool("isjump", true);
     }
 
+    //判断是否触碰到金币，使之数量+1
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("coin"))
