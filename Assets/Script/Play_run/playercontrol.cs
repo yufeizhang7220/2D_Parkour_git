@@ -13,20 +13,23 @@ public class playercontrol : MonoBehaviour
 
     //判断是否触地
     private bool isGround;
+    private bool Could_die = true;
 
     //静态申明血量，金币数量
     public static int hp=1;
     public static int coin_num = 0;
 
-    //获取over_menu物品，以及coin_num的文本组件
+
+    //获取over_menu物品，以及coin_num文本组件和groundcontrol组件
     public GameObject over_menu;
     public TMP_Text coin_text;
+    public groundcontrol ground_control;
     
     void Start()
     {
         rbody = GetComponent<Rigidbody2D>();
         ani = GetComponent<Animator>();
-
+        
         //初始化hp，coin_num
         hp = 1;
         coin_num = 0;
@@ -53,6 +56,17 @@ public class playercontrol : MonoBehaviour
         }        
     }
 
+    //死亡函数
+    public void Die()
+    {
+        if (Could_die==true)
+        {
+            hp = 0;
+            audiomanager.instance.Play("Boss死了");
+            ani.SetBool("isdie", true);
+        }
+    }
+
     //跳跃功能
     public void jump()
     {
@@ -73,20 +87,10 @@ public class playercontrol : MonoBehaviour
         }
         ani.SetBool("isjump", false);
 
-        //判断是否出界，导致扣血，死亡
-        if (collision.collider.tag == "die"&&hp>0)
+        //判断是否出界,是否碰到敌人，导致扣血，死亡
+        if (collision.collider.tag == "die"&&hp>0|| collision.collider.tag == "enemy")
         {
-            hp = 0;
-            audiomanager.instance.Play("Boss死了");
-            ani.SetBool("isdie", true);
-        }
-
-        //判断是否碰到敌人，导致死亡扣血
-        if (collision.collider.tag == "enemy")
-        {
-            hp = 0;
-            audiomanager.instance.Play("Boss死了");
-            ani.SetBool("isdie", true);
+            Die();
         }
 
     }
@@ -102,13 +106,43 @@ public class playercontrol : MonoBehaviour
         ani.SetBool("isjump", true);
     }
 
-    //判断是否触碰到金币，使之数量+1
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //判断是否触碰到金币，使之数量+1
         if (collision.CompareTag("coin"))
         {
             coin_num += 1;
             coin_text.text = "×" + coin_num;
         }
+
+        //7s超级大跳状态
+        if (collision.CompareTag("super_jump"))
+        {
+            //设定为不死，加快移动速度
+            Could_die = false;
+            ground_control.speed = 5f;
+            //使y轴无法移动（不会掉下去）
+            rbody.constraints = RigidbodyConstraints2D.FreezePositionY|RigidbodyConstraints2D.FreezeRotation;
+            //飞起来
+            Vector2 pos = transform.position;
+            pos.y = 1.5f;
+            transform.position = pos;
+            //4s后加载降落函数
+            Invoke("fall", 4f);
+        }
+        
     }
+
+    //降落函数
+    public void fall()
+    {
+        Could_die = true;
+        ground_control.speed = 2f;
+        rbody.constraints = RigidbodyConstraints2D.FreezeRotation;
+
+    }
+
+
+
 }

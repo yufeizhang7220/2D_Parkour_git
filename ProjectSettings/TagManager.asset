@@ -8,6 +8,7 @@ TagManager:
   - die
   - enemy
   - coin
+  - super_jump
   layers:
   - Default
   - TransparentFX
