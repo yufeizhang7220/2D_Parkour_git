@@ -1549,6 +1549,11 @@ MonoBehaviour:
   - {fileID: 8131368499323304522, guid: cb6cbfd27201809449f9abb08d369ab6, type: 3}
   - {fileID: 7310178851771561605, guid: 0e5512ffe780a7d40bb0bebcf8b35a87, type: 3}
   - {fileID: 669580489328778267, guid: d4a36e41451127448affddc630bdc7ad, type: 3}
+--- !u!4 &864508292 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3897919480869470888, guid: 0355a3d06d79adb488ab1cd9f542fbbf, type: 3}
+  m_PrefabInstance: {fileID: 1865961297029893077}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &900145222
 GameObject:
   m_ObjectHideFlags: 0
@@ -1696,7 +1701,6 @@ GameObject:
   - component: {fileID: 974589926}
   - component: {fileID: 974589931}
   - component: {fileID: 974589932}
-  - component: {fileID: 974589933}
   - component: {fileID: 974589934}
   m_Layer: 0
   m_Name: player
@@ -1833,53 +1837,8 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
---- !u!61 &974589933
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 974589925}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.19372761, y: 0.026078627}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1.02}
-    newSize: {x: 1, y: 1.02}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.4635241, y: 0.8784299}
-  m_EdgeRadius: 0
 --- !u!70 &974589934
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -3811,7 +3770,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 6549063527806681286, guid: 5ce512fce021d26468073edcaefca17b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 864508292}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ce512fce021d26468073edcaefca17b, type: 3}
 --- !u!1001 &1865961297029893077
@@ -3820,15 +3782,15 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1485771052}
     m_Modifications:
     - target: {fileID: 3897919480869470888, guid: 0355a3d06d79adb488ab1cd9f542fbbf, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.3145
+      value: 2.63
       objectReference: {fileID: 0}
     - target: {fileID: 3897919480869470888, guid: 0355a3d06d79adb488ab1cd9f542fbbf, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.3257
+      value: 1.13
       objectReference: {fileID: 0}
     - target: {fileID: 3897919480869470888, guid: 0355a3d06d79adb488ab1cd9f542fbbf, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3840,15 +3802,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3897919480869470888, guid: 0355a3d06d79adb488ab1cd9f542fbbf, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3897919480869470888, guid: 0355a3d06d79adb488ab1cd9f542fbbf, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3897919480869470888, guid: 0355a3d06d79adb488ab1cd9f542fbbf, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3897919480869470888, guid: 0355a3d06d79adb488ab1cd9f542fbbf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3964,4 +3926,3 @@ SceneRoots:
   - {fileID: 1448940891}
   - {fileID: 1545204258}
   - {fileID: 154418249}
-  - {fileID: 1865961297029893077}
