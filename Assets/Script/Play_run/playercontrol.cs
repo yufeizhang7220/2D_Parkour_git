@@ -1,10 +1,28 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+//声明一个数据组（包含时间，金币数，分数）
+[System.Serializable]
+public class player_data
+{
+    public string time;
+    public int coin_num;
+    public int score;
+}
+
+
+//声明一个列表（以数据组为基准）
+[System.Serializable]
+public class player_data_record
+{
+    public List<player_data> record = new List<player_data>();
+}
 public class playercontrol : MonoBehaviour
 {
     //获取自身组件
@@ -19,21 +37,30 @@ public class playercontrol : MonoBehaviour
     public static int hp=1;
     public static int coin_num = 0;
 
+    //初始化数据以及数据列表
+    public player_data Data;
+    public player_data_record all_record = new player_data_record();
 
     //获取over_menu物品，以及coin_num文本组件和groundcontrol组件
     public GameObject over_menu;
     public TMP_Text coin_text;
     public groundcontrol ground_control;
-    
+    public Scorecontrol score_control;
+
+    private void Awake()
+    {
+        //加载数据
+        load_data();
+    }
     void Start()
     {
+
         rbody = GetComponent<Rigidbody2D>();
         ani = GetComponent<Animator>();
         
         //初始化hp，coin_num
         hp = 1;
         coin_num = 0;
-        
         
     }
 
@@ -56,28 +83,6 @@ public class playercontrol : MonoBehaviour
         }        
     }
 
-    //死亡函数
-    public void Die()
-    {
-        if (Could_die==true)
-        {
-            hp = 0;
-            audiomanager.instance.Play("Boss死了");
-            ani.SetBool("isdie", true);
-        }
-    }
-
-    //跳跃功能
-    public void jump()
-    {
-        if (isGround == true)
-        {
-            rbody.AddForce(Vector2.up * 400);
-            audiomanager.instance.Play("跳");
-        }
-            
-    }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //判断是否触地
@@ -91,6 +96,8 @@ public class playercontrol : MonoBehaviour
         if (collision.collider.tag == "die"&&hp>0|| collision.collider.tag == "enemy")
         {
             Die();
+            //死后保存数据
+            save_data();
         }
 
     }
@@ -144,5 +151,72 @@ public class playercontrol : MonoBehaviour
     }
 
 
+    //死亡函数
+    public void Die()
+    {
+        if (Could_die == true)
+        {
+            hp = 0;
+            audiomanager.instance.Play("Boss死了");
+            ani.SetBool("isdie", true);
+        }
+    }
 
+    //跳跃函数
+    public void jump()
+    {
+        if (isGround == true)
+        {
+            rbody.AddForce(Vector2.up * 400);
+            audiomanager.instance.Play("跳");
+        }
+
+    }
+
+    //生成数据函数
+    public void generate_data()
+    {
+        //创建
+        Data = new player_data();
+        //赋值
+        Data.time = DateTime.Today.ToString("yyyy-MM-dd");
+        Data.coin_num = coin_num;
+        Data.score = score_control.ap_score;
+    }
+
+    //保存数据函数
+    public void save_data()
+    {
+        //先创建数据
+        generate_data();
+
+        //将数据添加到列表中
+        all_record.record.Add(Data);
+
+        //写入json文件
+        string data_json = JsonUtility.ToJson(all_record,true);
+        string filepath = Application.streamingAssetsPath + "/player_history_data.json";
+        using (StreamWriter sw = new StreamWriter(filepath)) 
+        {
+            sw.WriteLine(data_json);
+            sw.Close();
+            sw.Dispose();
+        }
+    }
+
+    //加载数据函数
+    public void load_data()
+    {
+        
+        string filepath= Application.streamingAssetsPath + "/player_history_data.json";
+        string json_data;
+        //读取json文件
+        using(StreamReader sr=new StreamReader(filepath))
+        {
+            json_data = sr.ReadToEnd();
+            //将数据赋值到all_record列表中
+            all_record = JsonUtility.FromJson<player_data_record>(json_data);
+            sr.Close();
+        }
+    }
 }

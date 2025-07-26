@@ -32,6 +32,13 @@ public class menu : MonoBehaviour
         UnityEditor.EditorApplication.isPlaying = false;
     }
 
-    
+    public void history()
+    {
+        SceneManager.LoadScene("history");
+    }
 
+    public void to_Menu()
+    {
+        SceneManager.LoadScene("log_in");
+    }
 }

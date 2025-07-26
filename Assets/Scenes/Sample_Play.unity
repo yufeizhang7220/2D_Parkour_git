@@ -1809,9 +1809,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 147ef92b087bd1346b2042772419b4e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Data:
+    coin_num: 0
+    score: 0
   over_menu: {fileID: 1545204257}
   coin_text: {fileID: 103200983}
   ground_control: {fileID: 858641696}
+  score_control: {fileID: 1743780132}
 --- !u!50 &974589932
 Rigidbody2D:
   serializedVersion: 4
@@ -3266,6 +3270,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Score: {fileID: 0}
   re_score: 0
+  ap_score: 0
 --- !u!1 &1886786471
 GameObject:
   m_ObjectHideFlags: 0
