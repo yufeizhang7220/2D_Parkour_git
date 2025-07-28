@@ -146,7 +146,7 @@ public class playercontrol : MonoBehaviour
     {
         Could_die = true;
         ground_control.speed = 2f;
-        rbody.constraints = RigidbodyConstraints2D.FreezeRotation;
+        rbody.constraints = RigidbodyConstraints2D.FreezeRotation|RigidbodyConstraints2D.FreezePositionX;
 
     }
 

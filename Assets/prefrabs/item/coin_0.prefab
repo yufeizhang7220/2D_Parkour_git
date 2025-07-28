@@ -98,7 +98,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06d77afa1d715804189d4ce5f82d5449, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coin_num: {fileID: 0}
+  player_tran: {fileID: 1875226699900841466, guid: f508dd7cfe5d58c40b5b6068c043185c, type: 3}
+  player_collider: {fileID: 2977640672631745992, guid: f508dd7cfe5d58c40b5b6068c043185c, type: 3}
+  attract_distance: 5
+  attract_speed: 5
 --- !u!61 &4053877633120660700
 BoxCollider2D:
   m_ObjectHideFlags: 0
