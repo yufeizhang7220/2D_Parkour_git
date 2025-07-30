@@ -1,13 +1,16 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class magnet_comtrol : MonoBehaviour
 {
+    public menu_inGame fuction_menu;
+
     public static bool is_attract = false;
     void Start()
     {
-        
+
     }
 
     
@@ -21,14 +24,15 @@ public class magnet_comtrol : MonoBehaviour
         //碰到磁铁时，发出声音，开始吸引，并且销毁
         audiomanager.instance.Play("金币");
         is_attract = true;
-        Invoke("close_attract", 5f);
+        fuction_close();
         Destroy(gameObject);
+        
 
     }
 
-    //取消吸引函数
-    public void close_attract()
+    public void fuction_close()
     {
-        is_attract = false;
+        fuction_menu.close_attract_invoke();
     }
+    
 }

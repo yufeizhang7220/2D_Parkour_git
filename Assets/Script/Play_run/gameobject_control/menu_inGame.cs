@@ -79,4 +79,18 @@ public class menu_inGame : MonoBehaviour
         Continue();
         SceneManager.LoadScene("Sample_Play");
     }
+
+    //关闭吸引
+    public void close_attract()
+    {
+        magnet_comtrol.is_attract = false;
+    }
+
+    //延迟调用close_attract
+    public void close_attract_invoke()
+    {
+        Invoke("close_attract", 5f);
+    }
+
+   
 }
