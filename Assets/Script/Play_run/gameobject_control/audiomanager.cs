@@ -8,9 +8,14 @@ public class audiomanager : MonoBehaviour
     private AudioSource player;
     //创建BGM列表
     public AudioClip[] back_music;
+    //声明音量
+    public float music_volume=0.5f;
+    public bool ismuted = false;
     void Start()
     {
+        data_reset();
         instance = this;
+        //DontDestroyOnLoad(gameObject);
         player = GetComponent<AudioSource>();
         //随机播放一首bgm
         play_bgm();
@@ -51,7 +56,19 @@ public class audiomanager : MonoBehaviour
         //获得随机播放片段
         player.clip = back_music[Random.Range(0, back_music.Length)];
         //控制音量大小
-        player.volume = 0.5f;
+        player.volume = music_volume;
         player.Play();
+    }
+
+    public void MusicMuted()
+    {
+        player.mute = !ismuted;
+    }
+
+    //重置参数函数
+    public void data_reset()
+    {
+        ismuted = false;
+        music_volume = 0.5f;
     }
 }

@@ -10,7 +10,7 @@ public class magnet_comtrol : MonoBehaviour
     public static bool is_attract = false;
     void Start()
     {
-
+        is_attract = false;
     }
 
     

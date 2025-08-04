@@ -12,7 +12,7 @@ public class groundcontrol : MonoBehaviour
 
     void Start()
     {
-        
+        speed = 2.0f;
     }
 
     void Update()

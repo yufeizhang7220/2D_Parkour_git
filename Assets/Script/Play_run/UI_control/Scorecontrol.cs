@@ -12,13 +12,15 @@ public class Scorecontrol : MonoBehaviour
     private groundcontrol gc;
 
     //建立暂时计时器，真计时器和真分数
-    private float timer = 0;
-    float re_time = 0;
+    private float timer = 0f;
+    private float re_time = 0f;
     public float re_score = 0f;
     public int ap_score ;
     // Start is called before the first frame update
     void Start()
     {
+        //重置参数
+        data_reset();
         //获取组件
         gc = FindObjectOfType<groundcontrol>();
         Score = GetComponent<TMP_Text>();
@@ -39,11 +41,20 @@ public class Scorecontrol : MonoBehaviour
                 re_score = re_time * gc.speed * 2;
                 ap_score = (int)re_score;
                 //输出
-                Score.text = "Score:" + ap_score;
+                Score.text = "分数:" + ap_score;
                 //重置
                 timer = 0;
             }
 
         }
+    }
+
+    //重置参数函数
+    public void data_reset()
+    {
+        timer = 0f;
+        re_time = 0f;
+        re_score = 0f;
+        ap_score = 0;
     }
 }

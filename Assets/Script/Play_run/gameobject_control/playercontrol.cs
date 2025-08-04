@@ -50,11 +50,108 @@ public class playercontrol : MonoBehaviour
     public Scorecontrol score_control;
 
 
+    //游戏函数调用
+
+    private void Awake()
+    {
+        //加载数据
+        load_data();
+    }
+    void Start()
+    {
+
+        rbody = GetComponent<Rigidbody2D>();
+        ani = GetComponent<Animator>();
+
+        //初始化hp，coin_num,could_die
+        data_reset();
+
+    }
+
+    void Update()
+    {
+
+        //空格判断跳跃
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            jump();
+        }
+        //死亡界面跳转
+        if (hp == 0)
+        {
+            Die();
+            if (over_menu != null)
+            {
+                over_menu.SetActive(true);
+            }
+
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        //判断是否触地
+        if (collision.collider.tag == "ground")
+        {
+            isGround = true;
+        }
+        ani.SetBool("isjump", false);
+
+        //判断是否出界,是否碰到敌人，导致扣血，死亡
+        if (collision.collider.tag == "die" && hp > 0 || collision.collider.tag == "enemy")
+        {
+            hp--;
+            relive();
+            //死后保存数据
+            save_data();
+        }
+
+    }
+
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        //判断是否触地
+        if (collision.collider.tag == "ground")
+        {
+            isGround = false;
+        }
+        ani.SetBool("isjump", true);
+    }
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        //判断是否触碰到金币，使之数量+1
+        if (collision.CompareTag("coin"))
+        {
+            coin_num += 1;
+            coin_text.text = "×" + coin_num;
+        }
+
+        //7s超级大跳状态
+        if (collision.CompareTag("super_jump"))
+        {
+            super_jump();
+        }
+
+    }
+
     //各个函数的申明
+
+    //重置参数函数
+    public void data_reset()
+    {
+        hp = 1;
+        coin_num = 0;
+        Could_die = true;
+    }
 
     //降落函数
     public void fall()
     {
+        //hp = 1;
+        //coin_num = 0;
         Could_die = true;
         ground_control.speed = 2f;
         rbody.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionX;
@@ -153,103 +250,7 @@ public class playercontrol : MonoBehaviour
         }
     }
 
-    //游戏函数调用
 
-    private void Awake()
-    {
-        //加载数据
-        load_data();
-    }
-    void Start()
-    {
-
-        rbody = GetComponent<Rigidbody2D>();
-        ani = GetComponent<Animator>();
-        
-        //初始化hp，coin_num
-        hp = 1;
-        coin_num = 0;
-        
-    }
-
-    void Update()
-    {
-        
-        //空格判断跳跃
-       if (Input.GetKeyDown(KeyCode.Space))
-       {
-                jump();
-       }
-       //死亡界面跳转
-        if (hp == 0)
-        {
-            Die();
-            if (over_menu != null)
-            {
-                over_menu.SetActive(true);
-            }
-
-        }        
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        //判断是否触地
-        if (collision.collider.tag == "ground")
-        {
-            isGround = true;
-        }
-        ani.SetBool("isjump", false);
-
-        //判断是否出界,是否碰到敌人，导致扣血，死亡
-        if (collision.collider.tag == "die"&&hp>0|| collision.collider.tag == "enemy")
-        {
-            hp--;
-            relive();
-            //死后保存数据
-            save_data();
-        }
-
-    }
-
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        //判断是否触地
-        if (collision.collider.tag == "ground")
-        {
-            isGround = false;
-        }
-        ani.SetBool("isjump", true);
-    }
-
-    
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        //判断是否触碰到金币，使之数量+1
-        if (collision.CompareTag("coin"))
-        {
-            coin_num += 1;
-            coin_text.text = "×" + coin_num;
-        }
-
-        //7s超级大跳状态
-        if (collision.CompareTag("super_jump"))
-        {
-            //设定为不死，加快移动速度
-            Could_die = false;
-            ground_control.speed = 5f;
-            //使y轴无法移动（不会掉下去）
-            rbody.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
-            //飞起来
-            Vector2 pos = transform.position;
-            pos.y = 1.5f;
-            transform.position = pos;
-            //4s后加载降落函数
-            Invoke("fall", 4f);
-        }
-        
-    }
 
    
 }

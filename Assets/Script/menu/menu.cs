@@ -41,4 +41,9 @@ public class menu : MonoBehaviour
     {
         SceneManager.LoadScene("log_in");
     }
+
+    public void setting()
+    {
+        SceneManager.LoadScene("setting");
+    }
 }

@@ -13,7 +13,7 @@ public class over_score : MonoBehaviour
     {
         over_menu = GetComponent<TMP_Text>();
 
-        over_menu.text = "Score:"+s.ap_score;
+        over_menu.text = "·ÖÊý:"+s.ap_score;
         
     }
 

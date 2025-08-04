@@ -8,13 +8,15 @@ public class menu_inGame : MonoBehaviour
     //获取暂停UI,game_over物品
     public GameObject pause_button;
     public GameObject gameover_menu;
+    public GameObject settingUI;
 
     //是否播放BGM判断
     public static bool is_play_bgm=true;
+    public static bool isPause = false;
     
     void Start()
     {
-        
+        data_reset();
     }
 
     void Update()
@@ -22,7 +24,14 @@ public class menu_inGame : MonoBehaviour
         //ESC暂停游戏
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Pause();
+            if (!isPause)
+            {
+                Pause();
+            }
+            else
+            {
+                Continue();
+            }
         }
     }
 
@@ -51,6 +60,7 @@ public class menu_inGame : MonoBehaviour
             //暂停BGM
             audiomanager.instance.pause_music();
             is_play_bgm = false;
+            isPause = true;
 
             //暂停游戏时间
             Time.timeScale = 0;
@@ -68,6 +78,7 @@ public class menu_inGame : MonoBehaviour
         //继续播放BGM
         audiomanager.instance.continue_music();
         is_play_bgm = true;
+        isPause = false;
 
         //继续游戏时间
         Time.timeScale=1;
@@ -92,5 +103,30 @@ public class menu_inGame : MonoBehaviour
         Invoke("close_attract", 5f);
     }
 
+    //重置参数函数
+    public void data_reset()
+    {
+        //初始化物品激活状态
+        pause_button.SetActive(false);
+        gameover_menu.SetActive(false);
+        settingUI.SetActive(false);
+
+        //继续播放BGM
+        audiomanager.instance.continue_music();
+        is_play_bgm = true;
+        isPause = false;
+
+        //继续游戏时间
+        Time.timeScale = 1;
+
+        magnet_comtrol.is_attract = false;
+    }
+
+
+    //设置按钮函数
+    public void Setting()
+    {
+        settingUI.SetActive(true);
+    }
    
 }

@@ -9,7 +9,7 @@ public class BgControl : MonoBehaviour
 
     void Start()
     {
-        
+        speed = 0.9f;
     }
 
     void Update()
