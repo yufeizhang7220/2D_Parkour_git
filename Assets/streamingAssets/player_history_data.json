@@ -429,6 +429,51 @@
             "time": "2025-08-04",
             "coin_num": 2,
             "score": 7
+        },
+        {
+            "time": "2025-08-06",
+            "coin_num": 2,
+            "score": 7
+        },
+        {
+            "time": "2025-08-06",
+            "coin_num": 5,
+            "score": 15
+        },
+        {
+            "time": "2025-08-06",
+            "coin_num": 2,
+            "score": 7
+        },
+        {
+            "time": "2025-08-06",
+            "coin_num": 5,
+            "score": 16
+        },
+        {
+            "time": "2025-08-06",
+            "coin_num": 11,
+            "score": 42
+        },
+        {
+            "time": "2025-08-06",
+            "coin_num": 2,
+            "score": 7
+        },
+        {
+            "time": "2025-08-06",
+            "coin_num": 5,
+            "score": 22
+        },
+        {
+            "time": "2025-08-06",
+            "coin_num": 20,
+            "score": 69
+        },
+        {
+            "time": "2025-08-06",
+            "coin_num": 2,
+            "score": 7
         }
     ]
 }

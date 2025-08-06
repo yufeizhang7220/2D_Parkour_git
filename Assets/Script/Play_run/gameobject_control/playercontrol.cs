@@ -32,7 +32,7 @@ public class playercontrol : MonoBehaviour
     private Animator ani;
 
     //判断是否触地
-    private bool isGround;
+    private bool isGround = false;
     private bool Could_die = true;
 
     //静态申明血量，金币数量
@@ -61,7 +61,16 @@ public class playercontrol : MonoBehaviour
     {
 
         rbody = GetComponent<Rigidbody2D>();
+        if (rbody == null)
+        {
+            Debug.LogError("没有找到player的重力组件");
+        }
+
         ani = GetComponent<Animator>();
+        if (ani == null)
+        {
+            Debug.LogError("没有找到player的动画组件");
+        }
 
         //初始化hp，coin_num,could_die
         data_reset();
@@ -145,6 +154,7 @@ public class playercontrol : MonoBehaviour
         hp = 1;
         coin_num = 0;
         Could_die = true;
+        isGround = false;
     }
 
     //降落函数

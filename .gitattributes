@@ -51,5 +51,3 @@
 *.meta linguist-generated
 *.prefab linguist-generated
 *.unity linguist-generated
-Assets/TextMesh[[:space:]]Pro/Fonts/STHUPO[[:space:]]SDF.asset filter=lfs diff=lfs merge=lfs -text
-Assets/TextMesh[[:space:]]Pro/Fonts/STSONG[[:space:]]SDF.asset filter=lfs diff=lfs merge=lfs -text

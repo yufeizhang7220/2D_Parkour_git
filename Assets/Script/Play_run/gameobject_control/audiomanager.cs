@@ -1,22 +1,37 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class audiomanager : MonoBehaviour
 {
+    //获得组件并且制作一个单例
     public static audiomanager instance;
     private AudioSource player;
+    public Slider music_volume_setting;
     //创建BGM列表
     public AudioClip[] back_music;
     //声明音量
-    public float music_volume=0.5f;
+    public static float music_volume=0.5f;
     public bool ismuted = false;
     void Start()
     {
+        //重置数据
         data_reset();
+
+        //获取组件
         instance = this;
-        //DontDestroyOnLoad(gameObject);
+        if (instance == null)
+        {
+            Debug.LogError("没有生成音乐单例");
+        }
+        
         player = GetComponent<AudioSource>();
+        if (player == null)
+        {
+            Debug.LogError("没有找到播放器");
+        }
+
         //随机播放一首bgm
         play_bgm();
     }
@@ -70,5 +85,27 @@ public class audiomanager : MonoBehaviour
     {
         ismuted = false;
         music_volume = 0.5f;
+    }
+
+    //静音函数
+    public void musicMuted()
+    {
+        ismuted = !ismuted;
+        player.mute = ismuted;
+    }
+
+    public void change_volume()
+    {
+        if (music_volume_setting == null)
+        {
+            Debug.LogError("找不到音量设置");
+        }
+        else
+        {
+            music_volume = music_volume_setting.value;
+            player.volume = music_volume;
+            Play("金币");
+        }
+            
     }
 }

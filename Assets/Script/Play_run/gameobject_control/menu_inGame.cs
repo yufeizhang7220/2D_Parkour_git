@@ -13,6 +13,7 @@ public class menu_inGame : MonoBehaviour
     //是否播放BGM判断
     public static bool is_play_bgm=true;
     public static bool isPause = false;
+    public bool issetting = false;
     
     void Start()
     {
@@ -24,14 +25,22 @@ public class menu_inGame : MonoBehaviour
         //ESC暂停游戏
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (!isPause)
+            if (!issetting)
             {
-                Pause();
+                if (!isPause)
+                {
+                    Pause();
+                }
+                else
+                {
+                    Continue();
+                }
             }
             else
             {
-                Continue();
+                Setting();
             }
+
         }
     }
 
@@ -115,6 +124,7 @@ public class menu_inGame : MonoBehaviour
         audiomanager.instance.continue_music();
         is_play_bgm = true;
         isPause = false;
+        issetting = false;
 
         //继续游戏时间
         Time.timeScale = 1;
@@ -126,7 +136,9 @@ public class menu_inGame : MonoBehaviour
     //设置按钮函数
     public void Setting()
     {
-        settingUI.SetActive(true);
+        issetting = !issetting;
+        settingUI.SetActive(issetting);
     }
-   
+
+
 }
