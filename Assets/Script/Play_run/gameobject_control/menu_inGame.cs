@@ -54,7 +54,7 @@ public class menu_inGame : MonoBehaviour
     public void to_exit()
     {
         Application.Quit();
-        UnityEditor.EditorApplication.isPlaying = false;
+        //UnityEditor.EditorApplication.isPlaying = false;
     }
 
     //ÔÝÍ£ÓÎÏ·º¯Êý

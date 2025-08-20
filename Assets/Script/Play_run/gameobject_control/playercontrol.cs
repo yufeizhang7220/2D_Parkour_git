@@ -107,7 +107,7 @@ public class playercontrol : MonoBehaviour
         ani.SetBool("isjump", false);
 
         //ÅĞ¶ÏÊÇ·ñ³ö½ç,ÊÇ·ñÅöµ½µĞÈË£¬µ¼ÖÂ¿ÛÑª£¬ËÀÍö
-        if (collision.collider.tag == "die" && hp > 0 || collision.collider.tag == "enemy")
+        if ((collision.collider.tag == "die" || collision.collider.tag == "enemy" )&& hp > 0 )
         {
             hp--;
             relive();
@@ -187,6 +187,7 @@ public class playercontrol : MonoBehaviour
     //¸´»îº¯Êı
     public void relive()
     {
+        if(hp>0)
         super_jump();
 
     }

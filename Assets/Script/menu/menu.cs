@@ -29,7 +29,7 @@ public class menu : MonoBehaviour
     public void exit()
     {
         Application.Quit();
-        UnityEditor.EditorApplication.isPlaying = false;
+        //UnityEditor.EditorApplication.isPlaying = false;
     }
 
     public void history()

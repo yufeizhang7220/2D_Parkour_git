@@ -18,7 +18,7 @@ public class groundcontrol : MonoBehaviour
     void Update()
     {
         //任务死亡时停止移动
-        if (playercontrol.hp == 0)
+        if (playercontrol.hp ==0)
         {
             return;
         }

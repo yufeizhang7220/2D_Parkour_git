@@ -412,7 +412,7 @@ MonoBehaviour:
   m_text: "\u5386\u53F2\u8BB0\u5F55\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 191d071ec5bb25448b22b720ab21ccee, type: 2}
-  m_sharedMaterial: {fileID: -6454414753973984071, guid: 191d071ec5bb25448b22b720ab21ccee, type: 2}
+  m_sharedMaterial: {fileID: 3937370692223963017, guid: 191d071ec5bb25448b22b720ab21ccee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -546,7 +546,7 @@ MonoBehaviour:
   m_text: "\u9000\u51FA"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 191d071ec5bb25448b22b720ab21ccee, type: 2}
-  m_sharedMaterial: {fileID: -6454414753973984071, guid: 191d071ec5bb25448b22b720ab21ccee, type: 2}
+  m_sharedMaterial: {fileID: 3937370692223963017, guid: 191d071ec5bb25448b22b720ab21ccee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -961,7 +961,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -1078,7 +1078,7 @@ MonoBehaviour:
   m_text: "\u5F00\u59CB\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 191d071ec5bb25448b22b720ab21ccee, type: 2}
-  m_sharedMaterial: {fileID: -6454414753973984071, guid: 191d071ec5bb25448b22b720ab21ccee, type: 2}
+  m_sharedMaterial: {fileID: 3937370692223963017, guid: 191d071ec5bb25448b22b720ab21ccee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
